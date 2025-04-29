@@ -1,104 +1,62 @@
-/* Estilos gerais */
-body {
+/* Reset geral */
+html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #1a1a1a;
-  color: white;
-  overflow-x: hidden;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background-color: #000;
+  font-family: sans-serif;
 }
 
+/* Cada slide ocupa a tela inteira */
 section {
+  scroll-snap-align: start;
+  height: 100vh;
+  width: 100vw;
   position: relative;
 }
 
-/* Efeito de fade do ícone do vídeo (play/pause) */
+/* Vídeo e imagem em tela cheia */
+video,
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ícone de play/pause com fade */
 .fade-icon {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-
 .fade-icon.show {
   opacity: 1;
 }
 
-#videoIcon {
-  transition: opacity 0.3s ease-in-out;
+/* Coração com efeito popup */
+.popup {
+  animation: popup 0.3s ease-in-out;
+}
+@keyframes popup {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
 }
 
-/* Estilos da foto de perfil */
-.profile-img {
+/* Coração pressionado fica vermelho */
+.liked {
+  fill: #ff4d4d !important;
+}
+
+/* Responsividade para perfil */
+img.rounded-full {
   width: 3rem;
   height: 3rem;
-  border-radius: 50%;
-  border: 2px solid white;
 }
 
-/* Efeito de coração interativo */
-#heartIcon1.liked,
-#heartIcon2.liked {
-  fill: red; /* Cor vermelha quando curtido */
-}
-
-.popup {
-  animation: popupAnimation 0.3s ease-in-out;
-}
-
-@keyframes popupAnimation {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Adicionar um fundo preto translúcido nas legendas */
-.text-left p {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 5px;
-}
-
-/* Estilos para o coração interativo */
-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-/* Estilos do ícone do coração */
-#heartIcon1, #heartIcon2 {
-  transition: transform 0.3s ease;
-}
-
-/* Estilos para o ícone de Play/Pause */
-#iconSvg {
-  transition: transform 0.3s ease;
-  opacity: 0.8;
-}
-
-#iconSvg:hover {
-  opacity: 1;
-}
-
-/* Ajustes no layout e para dispositivos móveis */
-@media screen and (max-width: 768px) {
-  .profile-img {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  #heartIcon1, #heartIcon2 {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  #iconSvg {
-    width: 4rem;
-    height: 4rem;
-  }
+/* Ajustes de ícones */
+svg {
+  transition: fill 0.2s ease;
 }
