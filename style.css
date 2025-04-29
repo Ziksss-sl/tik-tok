@@ -1,3 +1,4 @@
+/* Corpo da página */
 html, body {
   margin: 0;
   padding: 0;
@@ -7,17 +8,23 @@ html, body {
   overflow-y: scroll;
 }
 
+/* Para cada slide da página */
 .snap {
   scroll-snap-align: start;
+  position: relative;
 }
 
-video {
-  object-fit: cover;
-  width: 100vw;
-  height: 100vh;
-  cursor: pointer;
+/* Efeito de animação para o ícone de play/pause */
+.fade-icon {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
+.fade-icon.show {
+  opacity: 1;
+}
+
+/* Efeito de animação do ícone de coração interativo */
 .popup {
   animation: popup 0.3s ease-in-out;
 }
@@ -26,4 +33,154 @@ video {
   0% { transform: scale(1); }
   50% { transform: scale(1.5); }
   100% { transform: scale(1); }
+}
+
+/* Estilo de vídeo e foto de fundo */
+video, .snap img {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Estilo para os ícones e botões */
+button {
+  cursor: pointer;
+}
+
+button svg {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Ícones (coração, play/pause) */
+button svg:hover {
+  transform: scale(1.1);
+}
+
+button svg:active {
+  transform: scale(1.2);
+}
+
+/* Botão de curtir: animação quando clicado */
+button svg.popup {
+  animation: popup 0.3s ease-in-out;
+}
+
+/* Ajustes de posicionamento para os elementos no vídeo e imagem */
+.absolute {
+  position: absolute;
+}
+
+.left-4 {
+  left: 1rem;
+}
+
+.bottom-20 {
+  bottom: 5rem;
+}
+
+.bottom-4 {
+  bottom: 1rem;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-opacity-50 {
+  background-opacity: 0.5;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.w-20 {
+  width: 5rem;
+}
+
+.h-20 {
+  height: 5rem;
+}
+
+.space-x-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.space-y-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+/* Fade in/out da tela */
+.show {
+  display: block;
 }
