@@ -5,7 +5,7 @@
   <title>TikTok Romântico</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css"> <!-- Arquivo CSS agora linkado -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -32,7 +32,7 @@
 
     <!-- Criador -->
     <div class="absolute bottom-4 left-4 z-10 flex items-center space-x-3">
-      <img src="Screenshot_20250429-134949.png" class="w-12 h-12 rounded-full border-2 border-white" alt="Perfil">
+      <img src="Screenshot_20250429-134949.png" class="profile-img" alt="Perfil">
       <div class="text-white text-sm">
         <p class="font-bold">VINICIOS</p>
         <p class="text-xs">@Ziksss</p>
@@ -64,7 +64,7 @@
 
     <!-- Criador -->
     <div class="absolute bottom-4 left-4 z-10 flex items-center space-x-3">
-      <img src="Screenshot_20250429-134949.png" class="w-12 h-12 rounded-full border-2 border-white" alt="Perfil">
+      <img src="Screenshot_20250429-134949.png" class="profile-img" alt="Perfil">
       <div class="text-white text-sm">
         <p class="font-bold">VINICIOS</p>
         <p class="text-xs">@Ziksss</p>
@@ -130,31 +130,24 @@
         showIcon('play');
       } else {
         video.pause();
+        video.muted = true;
         showIcon('pause');
       }
     });
 
+    // Função para garantir que o vídeo reinicie quando acabar
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       video.play();
     });
 
-    // Função para pausar o vídeo ao sair da tela
-    function handleScroll() {
-      const video = document.getElementById('romanticVideo');
-      if (video.getBoundingClientRect().top < window.innerHeight && video.getBoundingClientRect().bottom >= 0) {
-        if (video.paused) {
-          video.play();
-        }
-      } else {
-        if (!video.paused) {
-          video.pause();
-        }
+    // Scroll para pular o vídeo
+    window.addEventListener('scroll', () => {
+      if (video.paused === false) {
+        video.pause();
+        video.muted = true; // Pausa o áudio
       }
-    }
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();  // Inicializa a verificação ao carregar a página
+    });
   </script>
 
 </body>
