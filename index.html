@@ -5,16 +5,23 @@
   <title>TikTok Romântico</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css"> <!-- CSS separado -->
+  <link rel="stylesheet" href="style.css"> <!-- Arquivo CSS agora linkado -->
 </head>
 <body>
 
   <!-- Slide 1: Vídeo -->
   <section class="snap h-screen w-screen relative">
-    <video id="romanticVideo" muted loop playsinline>
-      <source src="lv_7372908454987582726_20250429132711.mp4" type="video/mp4">
+    <video id="romanticVideo" muted loop playsinline class="w-full h-full object-cover">
+      <source src="" type="video/mp4">
       Seu navegador não suporta vídeo.
     </video>
+
+    <!-- Ícone de play/pause -->
+    <div id="videoIcon" class="fade-icon absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+      <svg id="iconSvg" xmlns="http://www.w3.org/2000/svg" fill="white" class="w-20 h-20 opacity-80" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/> <!-- Play por padrão -->
+      </svg>
+    </div>
 
     <!-- Legenda -->
     <div class="absolute bottom-20 left-4 z-10 text-white text-left">
@@ -25,17 +32,17 @@
 
     <!-- Criador -->
     <div class="absolute bottom-4 left-4 z-10 flex items-center space-x-3">
-      <img src="Screenshot_20250429-134949.png" class="w-12 h-12 rounded-full border-2 border-white" alt="Perfil">
+      <img src="perfil.jpg" class="w-12 h-12 rounded-full border-2 border-white" alt="Perfil">
       <div class="text-white text-sm">
         <p class="font-bold">VINICIOS</p>
         <p class="text-xs">@Ziksss</p>
       </div>
     </div>
 
-    <!-- Ícones -->
+    <!-- Curtir - Coração interativo -->
     <div class="absolute bottom-24 right-4 z-10 flex flex-col items-center space-y-5 text-white">
-      <button id="likeBtn1" class="focus:outline-none">
-        <svg id="likeIcon1" xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8 h-8" viewBox="0 0 24 24">
+      <button id="heartBtn1" class="focus:outline-none">
+        <svg id="heartIcon1" xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8 h-8 opacity-60" viewBox="0 0 24 24">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4 
                    8.28 4 10 5.22 12 7.58 14 5.22 15.72 4 17.5 4 
                    20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -46,7 +53,7 @@
 
   <!-- Slide 2: Foto -->
   <section class="snap h-screen w-screen relative">
-    <img src="Picsart_25-04-29_13-32-37-883.jpg" class="object-cover w-full h-full" alt="Foto Romântica">
+    <img src="sua-foto.jpg" class="object-cover w-full h-full" alt="Foto Romântica">
 
     <!-- Legenda -->
     <div class="absolute bottom-20 left-4 z-10 text-white text-left">
@@ -57,17 +64,17 @@
 
     <!-- Criador -->
     <div class="absolute bottom-4 left-4 z-10 flex items-center space-x-3">
-      <img src="Screenshot_20250429-134949.png" class="w-12 h-12 rounded-full border-2 border-white" alt="Perfil">
+      <img src="perfil.jpg" class="w-12 h-12 rounded-full border-2 border-white" alt="Perfil">
       <div class="text-white text-sm">
         <p class="font-bold">VINICIOS</p>
         <p class="text-xs">@Ziksss</p>
       </div>
     </div>
 
-    <!-- Ícones -->
+    <!-- Curtir - Coração interativo -->
     <div class="absolute bottom-24 right-4 z-10 flex flex-col items-center space-y-5 text-white">
-      <button id="likeBtn2" class="focus:outline-none">
-        <svg id="likeIcon2" xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8 h-8" viewBox="0 0 24 24">
+      <button id="heartBtn2" class="focus:outline-none">
+        <svg id="heartIcon2" xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8 h-8 opacity-60" viewBox="0 0 24 24">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4 
                    8.28 4 10 5.22 12 7.58 14 5.22 15.72 4 17.5 4 
                    20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -78,32 +85,60 @@
 
   <!-- Scripts -->
   <script>
-    // Curtir 1
-    const likeBtn1 = document.getElementById('likeBtn1');
-    const likeIcon1 = document.getElementById('likeIcon1');
-    likeBtn1.addEventListener('click', () => {
-      likeIcon1.classList.add('popup');
-      setTimeout(() => likeIcon1.classList.remove('popup'), 300);
+    // Curtir 1 - Coração interativo
+    const heartBtn1 = document.getElementById('heartBtn1');
+    const heartIcon1 = document.getElementById('heartIcon1');
+    heartBtn1.addEventListener('click', () => {
+      heartIcon1.classList.add('popup');
+      setTimeout(() => heartIcon1.classList.remove('popup'), 300);
     });
 
-    // Curtir 2
-    const likeBtn2 = document.getElementById('likeBtn2');
-    const likeIcon2 = document.getElementById('likeIcon2');
-    likeBtn2.addEventListener('click', () => {
-      likeIcon2.classList.add('popup');
-      setTimeout(() => likeIcon2.classList.remove('popup'), 300);
+    // Curtir 2 - Coração interativo
+    const heartBtn2 = document.getElementById('heartBtn2');
+    const heartIcon2 = document.getElementById('heartIcon2');
+    heartBtn2.addEventListener('click', () => {
+      heartIcon2.classList.add('popup');
+      setTimeout(() => heartIcon2.classList.remove('popup'), 300);
     });
 
-    // Vídeo com som ao clicar e reinício
+    // Controle de play/pause e ícone
     const video = document.getElementById('romanticVideo');
+    const videoIcon = document.getElementById('videoIcon');
+    const iconSvg = document.getElementById('iconSvg');
+
+    let iconTimeout;
+
+    function showIcon(type) {
+      if (type === 'play') {
+        iconSvg.innerHTML = '<path d="M8 5v14l11-7z"/>';
+      } else {
+        iconSvg.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+      }
+
+      videoIcon.classList.add('show');
+
+      clearTimeout(iconTimeout);
+      iconTimeout = setTimeout(() => {
+        videoIcon.classList.remove('show');
+      }, 800);
+    }
+
     video.addEventListener('click', () => {
-      if (video.paused) video.play();
-      video.muted = false;
+      if (video.paused) {
+        video.play();
+        video.muted = false;
+        showIcon('play');
+      } else {
+        video.pause();
+        showIcon('pause');
+      }
     });
+
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       video.play();
     });
   </script>
+
 </body>
 </html>
