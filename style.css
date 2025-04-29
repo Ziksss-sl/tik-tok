@@ -1,62 +1,78 @@
-/* Reset geral */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  background-color: #000;
-  font-family: sans-serif;
+/* Estilo para o coração interativo */
+#heartIcon1.clicked,
+#heartIcon2.clicked {
+  fill: red; /* Mudando a cor para vermelho ao clicar */
 }
 
-/* Cada slide ocupa a tela inteira */
-section {
-  scroll-snap-align: start;
-  height: 100vh;
-  width: 100vw;
-  position: relative;
+#heartIcon1,
+#heartIcon2 {
+  transition: fill 0.3s ease;
 }
 
-/* Vídeo e imagem em tela cheia */
-video,
-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+/* Outras animações de interatividade */
+.popup {
+  animation: popup 0.3s ease-out;
 }
 
-/* Ícone de play/pause com fade */
+@keyframes popup {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Ajustes no tamanho da foto de perfil para celular */
+@media (max-width: 767px) {
+  .w-12 {
+    width: 40px;
+  }
+  .h-12 {
+    height: 40px;
+  }
+  /* Outras possíveis alterações responsivas podem ser feitas aqui */
+}
+
+/* Adicionando o efeito de transição suave para o ícone de play/pause */
 .fade-icon {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease-in-out;
 }
+
 .fade-icon.show {
   opacity: 1;
 }
 
-/* Coração com efeito popup */
-.popup {
-  animation: popup 0.3s ease-in-out;
-}
-@keyframes popup {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.5); }
-  100% { transform: scale(1); }
+/* Efeito de transição no ícone de play/pause */
+#iconSvg {
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Coração pressionado fica vermelho */
-.liked {
-  fill: #ff4d4d !important;
+#iconSvg.play {
+  transform: rotate(180deg);
 }
 
-/* Responsividade para perfil */
-img.rounded-full {
-  width: 3rem;
-  height: 3rem;
+#iconSvg.pause {
+  transform: rotate(0deg);
 }
 
-/* Ajustes de ícones */
-svg {
-  transition: fill 0.2s ease;
+/* Adicionando estilo para o vídeo e o fundo */
+video, .object-cover {
+  object-fit: cover;
+}
+
+/* Ajuste para os slides */
+.snap {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Estilizando os botões e corações */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
