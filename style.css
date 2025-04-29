@@ -180,6 +180,15 @@ button svg.popup {
   font-weight: 700;
 }
 
+/* Correção da foto de perfil */
+img.profile {
+  width: 3rem; /* Define o tamanho da foto */
+  height: 3rem; /* Garante que a foto tenha a mesma altura */
+  border-radius: 50%; /* Deixa a foto redonda */
+  border: 2px solid white; /* Adiciona uma borda branca à foto */
+  object-fit: cover; /* Garante que a imagem não distorça */
+}
+
 /* Fade in/out da tela */
 .show {
   display: block;
