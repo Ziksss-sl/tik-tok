@@ -1,0 +1,29 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #000;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.snap {
+  scroll-snap-align: start;
+}
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+}
+
+.popup {
+  animation: popup 0.3s ease-in-out;
+}
+
+@keyframes popup {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
