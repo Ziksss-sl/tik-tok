@@ -12,11 +12,6 @@ section {
   height: 100vh;
 }
 
-img {
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
 #romanticVideo {
   object-fit: cover;
   width: 100%;
@@ -42,48 +37,15 @@ img {
   }
 }
 
-/* Estilos do coração interativo */
-.popup {
-  animation: popup 0.3s ease-in-out;
-}
-
-@keyframes popup {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.5); }
-  100% { transform: scale(1); }
-}
-
-/* Ajustes para a foto de perfil */
-.profile-img {
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
-/* Estilo de texto para as legendas e criador */
-.text-white {
-  color: white;
-}
-
-.bg-black {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* Ajustes para o coração interativo */
-.heart-icon {
-  width: 30px;
-  height: 30px;
-}
-
 /* Ajustes específicos para dispositivos móveis */
 @media (max-width: 768px) {
   /* Ajuste do tamanho da foto de perfil */
-  .w-12 {
-    width: 32px !important;
-  }
-  .h-12 {
-    height: 32px !important;
+  .profile-img {
+    width: 32px;
+    height: 32px;
   }
 
+  /* Ajuste do ícone de play/pause */
   .w-20 {
     width: 50px !important;
   }
@@ -92,7 +54,15 @@ img {
     height: 50px !important;
   }
 
-  /* Ajuste da legenda e nome no mobile */
+  /* Ajuste do coração interativo */
+  .w-8 {
+    width: 30px !important;
+  }
+  .h-8 {
+    height: 30px !important;
+  }
+
+  /* Ajustes para textos em telas menores */
   .text-xl {
     font-size: 1.25rem !important;
   }
@@ -105,12 +75,10 @@ img {
     font-size: 0.875rem !important;
   }
 
-  /* Ajustes do coração para telas menores */
-  .w-8 {
-    width: 30px !important;
-  }
-  .h-8 {
-    height: 30px !important;
+  /* Ajuste da posição do coração */
+  .absolute.bottom-24.right-4 {
+    bottom: 15% !important;
+    right: 5% !important;
   }
 }
 
@@ -128,8 +96,19 @@ img {
   fill: white;
 }
 
-/* Estilos de ícones */
+/* Estilo dos ícones (play, pause, coração) */
 svg {
   width: 40px;
   height: 40px;
 }
+
+/* Estilo de texto para as legendas e criador */
+.text-white {
+  color: white;
+}
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*
