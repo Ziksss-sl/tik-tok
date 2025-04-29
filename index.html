@@ -138,6 +138,23 @@
       video.currentTime = 0;
       video.play();
     });
+
+    // Função para pausar o vídeo ao sair da tela
+    function handleScroll() {
+      const video = document.getElementById('romanticVideo');
+      if (video.getBoundingClientRect().top < window.innerHeight && video.getBoundingClientRect().bottom >= 0) {
+        if (video.paused) {
+          video.play();
+        }
+      } else {
+        if (!video.paused) {
+          video.pause();
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();  // Inicializa a verificação ao carregar a página
   </script>
 
 </body>
