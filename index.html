@@ -10,16 +10,16 @@
 <body>
 
   <!-- Slide 1: Vídeo -->
-  <section class="snap h-screen w-screen relative">
-    <video id="romanticVideo" muted loop playsinline class="w-full h-full object-cover">
+  <section class="snap">
+    <video id="romanticVideo" muted loop playsinline>
       <source src="lv_7372908454987582726_20250429132711.mp4" type="video/mp4">
       Seu navegador não suporta vídeo.
     </video>
 
-    <!-- Ícone de play/pause -->
+    <!-- Ícone play/pause -->
     <div id="videoIcon" class="fade-icon absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
       <svg id="iconSvg" xmlns="http://www.w3.org/2000/svg" fill="white" class="w-20 h-20 opacity-80" viewBox="0 0 24 24">
-        <path d="M8 5v14l11-7z"/> <!-- Play por padrão -->
+        <path d="M8 5v14l11-7z"/>
       </svg>
     </div>
 
@@ -32,28 +32,29 @@
 
     <!-- Criador -->
     <div class="absolute bottom-4 left-4 z-10 flex items-center space-x-3">
-      <img src="Screenshot_20250429-134949.png" class="profile-img" alt="Perfil">
+      <img src="Screenshot_20250429-134949.png" class="rounded-full border-2 border-white" alt="Perfil">
       <div class="text-white text-sm">
         <p class="font-bold">VINICIOS</p>
         <p class="text-xs">@Ziksss</p>
       </div>
     </div>
 
-    <!-- Curtir - Coração interativo -->
+    <!-- Curtir -->
     <div class="absolute bottom-24 right-4 z-10 flex flex-col items-center space-y-5 text-white">
-      <button id="heartBtn1" class="focus:outline-none">
+      <button id="heartBtn1">
         <svg id="heartIcon1" xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8 h-8 opacity-60" viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4 
-                   8.28 4 10 5.22 12 7.58 14 5.22 15.72 4 17.5 4 
-                   20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                   2 6 4 4 6.5 4 8.28 4 10 5.22 12 7.58 
+                   14 5.22 15.72 4 17.5 4 20 4 22 6 
+                   22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
       </button>
     </div>
   </section>
 
   <!-- Slide 2: Foto -->
-  <section class="snap h-screen w-screen relative">
-    <img src="Picsart_25-04-29_13-32-37-883.jpg" class="object-cover w-full h-full" alt="Foto Romântica">
+  <section class="snap">
+    <img src="Picsart_25-04-29_14-43-15-980.jpg" alt="Foto Romântica">
 
     <!-- Legenda -->
     <div class="absolute bottom-20 left-4 z-10 text-white text-left">
@@ -64,55 +65,36 @@
 
     <!-- Criador -->
     <div class="absolute bottom-4 left-4 z-10 flex items-center space-x-3">
-      <img src="Screenshot_20250429-134949.png" class="profile-img" alt="Perfil">
+      <img src="Screenshot_20250429-134949.png" class="rounded-full border-2 border-white" alt="Perfil">
       <div class="text-white text-sm">
         <p class="font-bold">VINICIOS</p>
         <p class="text-xs">@Ziksss</p>
       </div>
     </div>
 
-    <!-- Curtir - Coração interativo -->
+    <!-- Curtir -->
     <div class="absolute bottom-24 right-4 z-10 flex flex-col items-center space-y-5 text-white">
-      <button id="heartBtn2" class="focus:outline-none">
+      <button id="heartBtn2">
         <svg id="heartIcon2" xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8 h-8 opacity-60" viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4 
-                   8.28 4 10 5.22 12 7.58 14 5.22 15.72 4 17.5 4 
-                   20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                   2 6 4 4 6.5 4 8.28 4 10 5.22 12 7.58 
+                   14 5.22 15.72 4 17.5 4 20 4 22 6 
+                   22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
       </button>
     </div>
   </section>
 
-  <!-- Scripts -->
+  <!-- JavaScript -->
   <script>
-    // Curtir 1 - Coração interativo
-    const heartBtn1 = document.getElementById('heartBtn1');
-    const heartIcon1 = document.getElementById('heartIcon1');
-    heartBtn1.addEventListener('click', () => {
-      heartIcon1.classList.add('popup');
-      heartIcon1.classList.add('liked'); // Muda a cor para vermelho
-      setTimeout(() => {
-        heartIcon1.classList.remove('popup');
-        heartIcon1.classList.remove('liked'); // Retorna à cor original após 300ms
-      }, 300);
-    });
-
-    // Curtir 2 - Coração interativo
-    const heartBtn2 = document.getElementById('heartBtn2');
-    const heartIcon2 = document.getElementById('heartIcon2');
-    heartBtn2.addEventListener('click', () => {
-      heartIcon2.classList.add('popup');
-      heartIcon2.classList.add('liked'); // Muda a cor para vermelho
-      setTimeout(() => {
-        heartIcon2.classList.remove('popup');
-        heartIcon2.classList.remove('liked'); // Retorna à cor original após 300ms
-      }, 300);
-    });
-
-    // Controle de play/pause e ícone
     const video = document.getElementById('romanticVideo');
     const videoIcon = document.getElementById('videoIcon');
     const iconSvg = document.getElementById('iconSvg');
+
+    const heartBtn1 = document.getElementById('heartBtn1');
+    const heartIcon1 = document.getElementById('heartIcon1');
+    const heartBtn2 = document.getElementById('heartBtn2');
+    const heartIcon2 = document.getElementById('heartIcon2');
 
     let iconTimeout;
 
@@ -122,9 +104,7 @@
       } else {
         iconSvg.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
       }
-
       videoIcon.classList.add('show');
-
       clearTimeout(iconTimeout);
       iconTimeout = setTimeout(() => {
         videoIcon.classList.remove('show');
@@ -138,26 +118,34 @@
         showIcon('play');
       } else {
         video.pause();
-        video.muted = true;
         showIcon('pause');
       }
     });
 
-    // Função para garantir que o vídeo reinicie quando acabar
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       video.play();
     });
 
-    // Função para pular o vídeo ao rolar
+    // Coração popup e vermelho
+    function setupHeart(btn, icon) {
+      btn.addEventListener('click', () => {
+        icon.classList.add('popup');
+        icon.classList.toggle('liked');
+        setTimeout(() => icon.classList.remove('popup'), 300);
+      });
+    }
+    setupHeart(heartBtn1, heartIcon1);
+    setupHeart(heartBtn2, heartIcon2);
+
+    // Pausa o vídeo ao sair do slide
+    const sections = document.querySelectorAll('section');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) { // A partir de 100px de rolagem
-        video.currentTime = video.duration; // Pula para o final do vídeo
-        video.pause(); // Pausa o vídeo após pular
-        video.muted = true; // Desativa o som
+      const rect = video.getBoundingClientRect();
+      if (rect.top >= window.innerHeight || rect.bottom <= 0) {
+        video.pause();
       }
     });
   </script>
-
 </body>
-</html>
+          </html>
