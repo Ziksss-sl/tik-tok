@@ -90,7 +90,11 @@
     const heartIcon1 = document.getElementById('heartIcon1');
     heartBtn1.addEventListener('click', () => {
       heartIcon1.classList.add('popup');
-      setTimeout(() => heartIcon1.classList.remove('popup'), 300);
+      heartIcon1.classList.add('liked'); // Muda a cor para vermelho
+      setTimeout(() => {
+        heartIcon1.classList.remove('popup');
+        heartIcon1.classList.remove('liked'); // Retorna à cor original após 300ms
+      }, 300);
     });
 
     // Curtir 2 - Coração interativo
@@ -98,7 +102,11 @@
     const heartIcon2 = document.getElementById('heartIcon2');
     heartBtn2.addEventListener('click', () => {
       heartIcon2.classList.add('popup');
-      setTimeout(() => heartIcon2.classList.remove('popup'), 300);
+      heartIcon2.classList.add('liked'); // Muda a cor para vermelho
+      setTimeout(() => {
+        heartIcon2.classList.remove('popup');
+        heartIcon2.classList.remove('liked'); // Retorna à cor original após 300ms
+      }, 300);
     });
 
     // Controle de play/pause e ícone
@@ -141,11 +149,12 @@
       video.play();
     });
 
-    // Scroll para pular o vídeo
+    // Função para pular o vídeo ao rolar
     window.addEventListener('scroll', () => {
-      if (video.paused === false) {
-        video.pause();
-        video.muted = true; // Pausa o áudio
+      if (window.scrollY > 100) { // A partir de 100px de rolagem
+        video.currentTime = video.duration; // Pula para o final do vídeo
+        video.pause(); // Pausa o vídeo após pular
+        video.muted = true; // Desativa o som
       }
     });
   </script>
